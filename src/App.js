@@ -2,25 +2,37 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
-  const [firstNr, setFirstNr] = useState(0);
+  const [firstNr, setFirstNr] = useState("0");
   const [operator, setOperator] = useState("");
-  const [secondNr, setSecondNr] = useState(0);
+  const [secondNr, setSecondNr] = useState("0");
   const [result, setResult] = useState("");
   const [storedValue, setStoredValue] = useState("...");
 
   const appendFirstNrs = (nr) => {
-    if (firstNr === 0 || firstNr === "") {
+    if (firstNr === "0" || firstNr === "") {
       setFirstNr(nr);
     } else {
-      setFirstNr(firstNr.toString() + nr);
+      setFirstNr(firstNr + nr);
     }
   };
 
   const appendSecondNrs = (nr) => {
-    if (secondNr === 0 || secondNr === "") {
+    if (secondNr === "0" || secondNr === "") {
       setSecondNr(nr);
     } else {
-      setSecondNr(secondNr.toString() + nr);
+      setSecondNr(secondNr + nr);
+    }
+  };
+
+  const appendDecimalToFirstNr = () => {
+    if (firstNr !== "" && !firstNr.includes(".")) {
+      setFirstNr(firstNr + ".");
+    }
+  };
+
+  const appendDecimalToSecondNr = () => {
+    if (secondNr !== "" && !secondNr.includes(".")) {
+      setSecondNr(secondNr + ".");
     }
   };
 
@@ -44,18 +56,17 @@ function App() {
       <div className="panel">
         <p>{firstNr}</p>
         <div className="numbers">
-          {/* so i could not pass through parameters, i had to change to arrow function */}
-          {/* <button onClick={appendNrs()}>1</button> */}
-          <button onClick={() => appendFirstNrs(1)}>1</button>
-          <button onClick={() => appendFirstNrs(2)}>2</button>
-          <button onClick={() => appendFirstNrs(3)}>3</button>
-          <button onClick={() => appendFirstNrs(4)}>4</button>
-          <button onClick={() => appendFirstNrs(5)}>5</button>
-          <button onClick={() => appendFirstNrs(6)}>6</button>
-          <button onClick={() => appendFirstNrs(7)}>7</button>
-          <button onClick={() => appendFirstNrs(8)}>8</button>
-          <button onClick={() => appendFirstNrs(9)}>9</button>
-          <button onClick={() => appendFirstNrs(0)}>0</button>
+          <button onClick={() => appendFirstNrs("1")}>1</button>
+          <button onClick={() => appendFirstNrs("2")}>2</button>
+          <button onClick={() => appendFirstNrs("3")}>3</button>
+          <button onClick={() => appendFirstNrs("4")}>4</button>
+          <button onClick={() => appendFirstNrs("5")}>5</button>
+          <button onClick={() => appendFirstNrs("6")}>6</button>
+          <button onClick={() => appendFirstNrs("7")}>7</button>
+          <button onClick={() => appendFirstNrs("8")}>8</button>
+          <button onClick={() => appendFirstNrs("9")}>9</button>
+          <button onClick={() => appendFirstNrs("0")}>0</button>
+          <button onClick={() => appendDecimalToFirstNr()}>.</button>
           <button onClick={() => setFirstNr("")}>Clear</button>
           <button onClick={() => setFirstNr(storedValue)}>Recall</button>
         </div>
@@ -74,16 +85,17 @@ function App() {
       <div className="panel">
         <p>{secondNr}</p>
         <div className="numbers">
-          <button onClick={() => appendSecondNrs(1)}>1</button>
-          <button onClick={() => appendSecondNrs(2)}>2</button>
-          <button onClick={() => appendSecondNrs(3)}>3</button>
-          <button onClick={() => appendSecondNrs(4)}>4</button>
-          <button onClick={() => appendSecondNrs(5)}>5</button>
-          <button onClick={() => appendSecondNrs(6)}>6</button>
-          <button onClick={() => appendSecondNrs(7)}>7</button>
-          <button onClick={() => appendSecondNrs(8)}>8</button>
-          <button onClick={() => appendSecondNrs(9)}>9</button>
-          <button onClick={() => appendSecondNrs(0)}>0</button>
+          <button onClick={() => appendSecondNrs("1")}>1</button>
+          <button onClick={() => appendSecondNrs("2")}>2</button>
+          <button onClick={() => appendSecondNrs("3")}>3</button>
+          <button onClick={() => appendSecondNrs("4")}>4</button>
+          <button onClick={() => appendSecondNrs("5")}>5</button>
+          <button onClick={() => appendSecondNrs("6")}>6</button>
+          <button onClick={() => appendSecondNrs("7")}>7</button>
+          <button onClick={() => appendSecondNrs("8")}>8</button>
+          <button onClick={() => appendSecondNrs("9")}>9</button>
+          <button onClick={() => appendSecondNrs("0")}>0</button>
+          <button onClick={() => appendDecimalToSecondNr()}>.</button>
           <button onClick={() => setSecondNr("")}>Clear</button>
           <button onClick={() => setSecondNr(storedValue)}>Recall</button>
         </div>
