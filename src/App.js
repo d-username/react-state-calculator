@@ -7,18 +7,34 @@ function App() {
   const [secondNr, setSecondNr] = useState(0);
   const [result, setResult] = useState("");
 
+  const appendFirstNrs = (nr) => {
+    if (firstNr === 0 || firstNr === "") {
+      setFirstNr(nr);
+    } else {
+      setFirstNr(firstNr.toString() + nr);
+    }
+  };
+
+  const appendSecondNrs = (nr) => {
+    if (secondNr === 0 || secondNr === "") {
+      setSecondNr(nr);
+    } else {
+      setSecondNr(secondNr.toString() + nr);
+    }
+  };
+
   const calculate = () => {
     if (operator === "+") {
-      setResult(firstNr + secondNr);
+      setResult(Number(firstNr) + Number(secondNr));
     }
     if (operator === "-") {
-      setResult(firstNr - secondNr);
+      setResult(Number(firstNr) - Number(secondNr));
     }
     if (operator === "*") {
-      setResult(firstNr * secondNr);
+      setResult(Number(firstNr) * Number(secondNr));
     }
     if (operator === "÷") {
-      setResult(firstNr / secondNr);
+      setResult(Number(firstNr) / Number(secondNr));
     }
   };
 
@@ -27,16 +43,18 @@ function App() {
       <div className="panel">
         <p>{firstNr}</p>
         <div className="numbers">
-          <button onClick={() => setFirstNr(1)}>1</button>
-          <button onClick={() => setFirstNr(2)}>2</button>
-          <button onClick={() => setFirstNr(3)}>3</button>
-          <button onClick={() => setFirstNr(4)}>4</button>
-          <button onClick={() => setFirstNr(5)}>5</button>
-          <button onClick={() => setFirstNr(6)}>6</button>
-          <button onClick={() => setFirstNr(7)}>7</button>
-          <button onClick={() => setFirstNr(8)}>8</button>
-          <button onClick={() => setFirstNr(9)}>9</button>
-          <button onClick={() => setFirstNr(0)}>0</button>
+          {/* so i could not pass through parameters, i had to change to arrow function */}
+          {/* <button onClick={appendNrs()}>1</button> */}
+          <button onClick={() => appendFirstNrs(1)}>1</button>
+          <button onClick={() => appendFirstNrs(2)}>2</button>
+          <button onClick={() => appendFirstNrs(3)}>3</button>
+          <button onClick={() => appendFirstNrs(4)}>4</button>
+          <button onClick={() => appendFirstNrs(5)}>5</button>
+          <button onClick={() => appendFirstNrs(6)}>6</button>
+          <button onClick={() => appendFirstNrs(7)}>7</button>
+          <button onClick={() => appendFirstNrs(8)}>8</button>
+          <button onClick={() => appendFirstNrs(9)}>9</button>
+          <button onClick={() => appendFirstNrs(0)}>0</button>
           <button onClick={() => setFirstNr("")}>Clear</button>
         </div>
       </div>
@@ -54,16 +72,16 @@ function App() {
       <div className="panel">
         <p>{secondNr}</p>
         <div className="numbers">
-          <button onClick={() => setSecondNr(1)}>1</button>
-          <button onClick={() => setSecondNr(2)}>2</button>
-          <button onClick={() => setSecondNr(3)}>3</button>
-          <button onClick={() => setSecondNr(4)}>4</button>
-          <button onClick={() => setSecondNr(5)}>5</button>
-          <button onClick={() => setSecondNr(6)}>6</button>
-          <button onClick={() => setSecondNr(7)}>7</button>
-          <button onClick={() => setSecondNr(8)}>8</button>
-          <button onClick={() => setSecondNr(9)}>9</button>
-          <button onClick={() => setSecondNr(0)}>0</button>
+          <button onClick={() => appendSecondNrs(1)}>1</button>
+          <button onClick={() => appendSecondNrs(2)}>2</button>
+          <button onClick={() => appendSecondNrs(3)}>3</button>
+          <button onClick={() => appendSecondNrs(4)}>4</button>
+          <button onClick={() => appendSecondNrs(5)}>5</button>
+          <button onClick={() => appendSecondNrs(6)}>6</button>
+          <button onClick={() => appendSecondNrs(7)}>7</button>
+          <button onClick={() => appendSecondNrs(8)}>8</button>
+          <button onClick={() => appendSecondNrs(9)}>9</button>
+          <button onClick={() => appendSecondNrs(0)}>0</button>
           <button onClick={() => setSecondNr("")}>Clear</button>
         </div>
       </div>
