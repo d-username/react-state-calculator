@@ -6,6 +6,7 @@ function App() {
   const [operator, setOperator] = useState("");
   const [secondNr, setSecondNr] = useState(0);
   const [result, setResult] = useState("");
+  const [storedValue, setStoredValue] = useState("...");
 
   const appendFirstNrs = (nr) => {
     if (firstNr === 0 || firstNr === "") {
@@ -56,6 +57,7 @@ function App() {
           <button onClick={() => appendFirstNrs(9)}>9</button>
           <button onClick={() => appendFirstNrs(0)}>0</button>
           <button onClick={() => setFirstNr("")}>Clear</button>
+          <button onClick={() => setFirstNr(storedValue)}>Recall</button>
         </div>
       </div>
 
@@ -83,6 +85,7 @@ function App() {
           <button onClick={() => appendSecondNrs(9)}>9</button>
           <button onClick={() => appendSecondNrs(0)}>0</button>
           <button onClick={() => setSecondNr("")}>Clear</button>
+          <button onClick={() => setSecondNr(storedValue)}>Recall</button>
         </div>
       </div>
 
@@ -91,6 +94,8 @@ function App() {
         <div>
           <button onClick={calculate}>=</button>
         </div>
+        <button onClick={() => setStoredValue(result)}>Store Answer</button>
+        <p>{storedValue}</p>
       </div>
     </div>
   );
